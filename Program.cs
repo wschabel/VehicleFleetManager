@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using VehicleFleetManager;
 
 Fleet fleet = new Fleet();
@@ -15,6 +14,7 @@ static void DisplayMenu()
     Console.WriteLine("4. Show Average Mileage");
     Console.WriteLine("5. Service Due Vehicles");
     Console.WriteLine("6. Exit");
+    Console.WriteLine("Choose what you want to do.");
 }
 
 static double GetMileage()
@@ -39,7 +39,7 @@ static double GetMileage()
 static int GetYear()
 {
     bool gettingYear = true;
-    int year = 0000;
+    int year = 0;
     
     while (gettingYear)
     {
@@ -105,8 +105,8 @@ static void RemoveVehicle(Fleet fleet)
                     string VehicleString = $"{fleet.Vehicles[Choice].Year} {fleet.Vehicles[Choice].Make} {fleet.Vehicles[Choice].Model}";
 
                     Console.WriteLine($"Removing {VehicleString}.");
-                    Vehicle V = fleet.Vehicles[Choice];
-                    bool removed = fleet.RemoveVehicle(V.Model);
+                    string model = fleet.Vehicles[Choice].Model;
+                    bool removed = fleet.RemoveVehicle(model);
                     if (removed)
                     {
                         Console.WriteLine($"{VehicleString} removed.");
